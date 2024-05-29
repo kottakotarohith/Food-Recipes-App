@@ -1,1 +1,22 @@
-GET http://localhost:4000/user-api/test-user
+//user requests
+
+###user registration request
+POST  http://localhost:4000/user-api/user
+Content-Type: application/json
+
+{
+    "usertype":"user",
+    "username":"user1",
+    "password":"user1",
+    "email":"user1@mail.com"
+}
+
+###user login request
+POST  http://localhost:4000/user-api/login
+Content-Type: application/json
+
+{
+    "usertype":"user",
+    "username":"user1",
+    "password":"user1"
+}
