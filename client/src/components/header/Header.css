@@ -1,0 +1,105 @@
+/* src/components/Header.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .left-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 40px;
+    margin-right: 0.5rem;
+  }
+  
+  .center-section {
+    display: none; /* Hide center section by default */
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 1rem;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    cursor: pointer;
+  }
+  
+  .menu-icon {
+    display: block; /* Show menu icon by default */
+  }
+  
+  .nav-small {
+    display: none; /* Hide small nav by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .nav-link:hover {
+    color: #ff5722; /* Change this to your accent color */
+  }
+  
+  .close-icon {
+    align-self: flex-end;
+    margin-bottom: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .center-section {
+      display: flex; /* Show center section for larger screens */
+    }
+    
+    .menu-icon {
+      display: none; /* Hide menu icon for larger screens */
+    }
+    
+    .nav-large {
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-small {
+      display: none; /* Ensure small nav is hidden on larger screens */
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .nav-small {
+      display: flex; /* Show small nav for smaller screens when menu is open */
+    }
+  }
+  
