@@ -11,6 +11,7 @@ Content-Type: application/json
     "email":"user1@mail.com"
 }
 
+
 ###user login request
 POST  http://localhost:4000/user-api/login
 Content-Type: application/json
@@ -19,4 +20,108 @@ Content-Type: application/json
     "usertype":"user",
     "username":"user1",
     "password":"user1"
+}
+
+### get all  recipes
+GET  http://localhost:4000/user-api/recipes
+
+
+
+### adding recipe
+POST  http://localhost:4000/user-api/recipe
+Content-Type: application/json
+
+{
+    "title":"Homemade Chicken Noodle Soup",
+    "ingredients":[
+        {
+            "name": "cups water",
+            "quantity": 2
+        },
+        {
+            "name": "cup chopped carrots",
+            "quantity": 0.5
+        },
+        {
+            "name": "up chopped celery",
+            "quantity": 0.5
+        },
+        {
+            "name": "onion, chopped",
+            "quantity": 0.25
+        },
+        {
+            "name": "bay leaf",
+            "quantity": 1
+        },
+        {
+            "name": "sprigs fresh thyme",
+            "quantity": 2
+        },
+        {
+            "name": "boneless, skinless chicken breast (or chicken thighs)",
+            "quantity": 1
+        },
+        {
+            "name": "cup egg noodles (or your preferred noodles)",
+            "quantity": 0.33
+        },
+        {
+            "name": "tablespoon chopped fresh parsley",
+            "quantity": 1
+        },
+        {
+            "name": "Salt and pepper, to taste",
+            "quantity": 0
+        },
+        {
+            "name": " tablespoon olive oil (optional)",
+            "quantity": 1
+        }
+    ],
+    "toppings":[],
+    "instructions": [
+        {
+            "step": 1,
+            "description": "Make the Chicken Broth",
+            "details": [
+                "In a small pot, combine water, carrots, celery, onion, bay leaf, and fresh thyme. Bring to a boil over medium heat.",
+                "Once boiling, reduce heat to low and simmer for 5 minutes. Drain the water and discard the solids.",
+                "Rinse the pot and add fresh cups of water to the pot.",
+                "Add boneless, skinless chicken breast (or chicken thighs) and reduce heat to low. Simmer for 20-25 minutes, or until chicken is cooked through.",
+                "Strain the broth into a bowl, discarding the solids. Set the cooked chicken aside."
+            ]
+        },
+        {
+            "step": 2,
+            "description": "Cook the Noodles",
+            "details": [
+                "In a separate pot, bring water to a boil.",
+                "Add egg noodles (or your preferred noodles) and cook according to package instructions, usually for 2-3 minutes, or until al dente.",
+                "Drain the noodles and set aside."
+            ]
+        },
+        {
+            "step": 3,
+            "description": "Assemble the Soup",
+            "details": [
+                "Shred the cooked chicken into bite-sized pieces.",
+                "In a serving bowl, combine the cooked noodles and the chicken broth.",
+                "Add the shredded chicken, chopped fresh parsley, and a pinch of salt and pepper to taste.",
+                "Optional: Drizzle with a teaspoon of olive oil for added flavor."
+            ]
+        },
+        {
+            "step": 4,
+            "description": "Enjoy!",
+            "details": [
+                "Savor your homemade chicken noodle soup, a perfect comfort food for any day."
+            ]
+        }
+    ],
+    "tags":[
+        "chicken",
+        "soup",
+        "noodles"
+    ]
 }

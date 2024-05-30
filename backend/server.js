@@ -15,16 +15,16 @@ mongoClient.connect(process.env.DataBase_URL)
     const foodRecipeApp = client.db('foodRecipeApp')
     //get collection obj
     const usersCollection = foodRecipeApp.collection('usersCollection')
+    const recipesCollection = foodRecipeApp.collection('recipesCollection')
     
     //share collection obj with express app
     app.set('usersCollection',usersCollection)
+    app.set('recipesCollection',recipesCollection)
     //confirm connection status
     console.log("DataBase connection successful")
 
 })
 .catch(err=>console.log("Error in DataBase connection"))
-
-
 
 
 

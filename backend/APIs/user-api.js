@@ -10,9 +10,17 @@ require('dotenv').config()
 
 
 let usersCollection
+let recipesCollection
 //get usersCollection object ( using middleware)
 userApp.use((req, res, next) => {
     usersCollection = req.app.get('usersCollection')
+    recipesCollection = req.app.get('recipesCollection')
+
+    // Check if usersCollection and recipesCollection are properly initialized
+    if (!usersCollection || !recipesCollection) {
+        return res.status(500).send({ message: "Database collections are not initialized properly" });
+    }
+
     next()
 })
 
@@ -57,6 +65,33 @@ userApp.post('/login', expressAsyncHandler(async (req, res) => {
             res.send({ message: "login successful", token: signedToken, user: dbUser })
         }
     }
+}))
+
+
+
+//adding recipes
+userApp.post('/recipe', expressAsyncHandler(async (req, res) => {
+
+    //get recipe data from client
+    const newRecipe = req.body
+    //check if recipe name is already existing or not
+    const dbRecipe = await recipesCollection.findOne({ title: newRecipe.title })
+    if (dbRecipe != null) {
+        res.send({ message: "the recipe name is already taken" })
+        } else {
+            //adding the recipe data to db
+            await recipesCollection.insertOne(newRecipe)
+            //send res
+            res.send({ message: "new recipe added" })
+            }
+}))
+
+// get  all recipes
+userApp.get('/recipes', expressAsyncHandler(async (req, res) => {
+    //get all recipes from db
+    const allRecipes = await recipesCollection.find({}).toArray()
+    //send res
+    res.send({message:"recipes" , payload:allRecipes})
 }))
 
 
