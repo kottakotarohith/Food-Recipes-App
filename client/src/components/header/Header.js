@@ -1,8 +1,8 @@
 import './Header.css';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaGithub, FaBars, FaTimes } from 'react-icons/fa';
-import logo from '../../imagesOfFoodRecipeApp/logo.png'
+import logo from '../../imagesOfFoodRecipeApp/logo.png';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,17 +30,17 @@ const Header = () => {
       {menuOpen && (
         <nav className="nav-small">
           <FaTimes className="icon close-icon" onClick={toggleMenu} />
-          <a href="/" className="nav-link">Home</a>
-          <a href="/recipes" className="nav-link">Recipes</a>
-          <a href="/about" className="nav-link">About</a>
+          <NavLink to="/" className="nav-link">Home</NavLink>
+          <NavLink to="/recipes" className="nav-link">Recipes</NavLink>
+          <NavLink to="/about" className="nav-link">About</NavLink>
         </nav>
       )}
 
       <div className="center-section">
         <nav className="nav-large">
-          <a href="/" className="nav-link px-3">Home</a>
-          <a href="/recipes" className="nav-link px-3" onClick={navigateToRecipes}>Recipes</a>
-          <a href="/about" className="nav-link px-3">About</a>
+          <NavLink to="/" className="nav-link px-3">Home</NavLink>
+          <NavLink to="/recipes" className="nav-link px-3" onClick={navigateToRecipes}>Recipes</NavLink>
+          <NavLink to="/about" className="nav-link px-3">About</NavLink>
         </nav>
       </div>
 

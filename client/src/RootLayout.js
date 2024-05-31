@@ -8,7 +8,7 @@ function RootLayout() {
     return (
         <div className='root-layout '>
         <Header/>
-        <div style={{minHeight:"100vh" , paddingTop:"98px"}}>
+        <div style={{minHeight:"100vh" , paddingTop:"45px"}}>
             <div className=" main-content ">
 
                 <Outlet/>

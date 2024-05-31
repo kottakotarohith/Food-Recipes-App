@@ -5,6 +5,7 @@ import { createBrowserRouter , RouterProvider} from 'react-router-dom'
 import RootLayout from './RootLayout';
 import Home from './components/home/Home';
 import Recipes from './components/recipes/Recipes';
+import Recipe from './components/recipe/Recipe';
 
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
         {
           path:"/recipes",
           element:<Recipes/>
+        },
+        {
+          path : "/recipe",
+          element: <Recipe/>
         }
       ]
     }

@@ -10,7 +10,7 @@
 }
 
 .recipeImg {
-    transition: transform 0.3s ease; /* Add transition for smooth zoom */
+    transition: transform 0.5s ease; /* Add transition for smooth zoom */
     display: block;
     width: 100%;
     height: auto;
@@ -19,4 +19,10 @@
 
 .card:hover .recipeImg {
     transform: scale(1.1); /* Scale up the image on hover */
+}
+
+.recipe_tag{
+    background-color:  #ffa780;
+    color: #8a2c0d;
+    margin-right: 10px;
 }
