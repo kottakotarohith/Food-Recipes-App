@@ -24,7 +24,7 @@ function App() {
           element:<Recipes/>
         },
         {
-          path : "/recipe",
+          path : `/recipe/:recipeTitle`,
           element: <Recipe/>
         }
       ]

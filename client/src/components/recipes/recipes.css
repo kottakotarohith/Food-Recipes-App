@@ -1,6 +1,9 @@
 .card {
+    height: 400px;
     position: relative;
-    padding: 15px
+    padding: 15px;
+    border: 1px solid #fcd9bd;
+    
 }
 .img-container{
     position: relative;
@@ -20,6 +23,11 @@
 .card:hover .recipeImg {
     transform: scale(1.1); /* Scale up the image on hover */
 }
+
+.recipe_tags{
+    bottom: 10px;
+}
+
 
 .recipe_tag{
     background-color:  #ffa780;
