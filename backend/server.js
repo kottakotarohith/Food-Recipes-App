@@ -3,6 +3,12 @@ const exp = require("express")
 const app = exp()
 require('dotenv').config()
 const mongoClient = require('mongodb').MongoClient;
+const path = require("path")
+
+
+//deploy react build in server
+app.use(exp.static(path.join(__dirname,'../client/build')))
+
 
 //body parser (to parse the body req)
 app.use(exp.json())
@@ -33,7 +39,10 @@ const userApp = require('./APIs/user-api')
 //if path starts with user-api then req is given to userApp
 app.use('/user-api' , userApp)
 
-
+//deal with  refresh
+app.use((req,res,next)=>{
+    res.sendFile(path.join(__dirname,'../client/build/index.html'))
+})
 
 
 //express error handler

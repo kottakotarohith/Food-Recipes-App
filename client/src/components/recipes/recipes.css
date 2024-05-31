@@ -1,0 +1,22 @@
+.card {
+    position: relative;
+    padding: 15px
+}
+.img-container{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;   /* Hide the overflow when the image zooms */
+    background-size: contain;
+}
+
+.recipeImg {
+    transition: transform 0.3s ease; /* Add transition for smooth zoom */
+    display: block;
+    width: 100%;
+    height: auto;
+    transform-origin: center; /* Ensure zoom happens from the center */
+}
+
+.card:hover .recipeImg {
+    transform: scale(1.1); /* Scale up the image on hover */
+}

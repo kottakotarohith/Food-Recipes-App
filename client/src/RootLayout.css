@@ -3,7 +3,8 @@
 .root-layout {
     display: flex;
     flex-direction: column;
-    
+    --tw-bg-opacity:1;
+    background-color: rgb(255, 248, 241 );
   }
   
   .main-content {
