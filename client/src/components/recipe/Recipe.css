@@ -1,0 +1,73 @@
+.img-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  .img-container img {
+    width: 100%;
+    object-fit: cover; /* This ensures the image covers the container without distortion */
+  }
+
+  .recipe-title{
+    margin-top: 15px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .instructions-ingredients{
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    grid-gap: 30px;
+  }
+
+  .instructions{
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+  }
+  .ingredients{
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+
+  ol{
+    list-style: none;
+  }
+  
+  .details-ul{
+    list-style: disc;
+    color: orange;
+    border: 1px solid salmon;
+    border-radius: 15px;
+    margin: 10px
+  }
+
+.serving-size-qty{
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 10px;
+    padding-right: 15px;
+    width: fit-content;
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+    margin-bottom: 10px;
+    
+}
+.serving-size-qty p{
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.serving-size-qty button{
+    border: none;
+}
+
+.ingredients-list p{
+    margin: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(227, 227, 227);
+}

@@ -24,12 +24,9 @@
     transform: scale(1.1); /* Scale up the image on hover */
 }
 
-.recipe_tags{
-    bottom: 10px;
-}
 
-
-.recipe_tag{
+.recipe_tag ,
+.recipe_tag:hover, .recipe_tag:disabled{
     background-color:  #ffa780;
     color: #8a2c0d;
     margin-right: 10px;

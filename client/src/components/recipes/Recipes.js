@@ -9,9 +9,9 @@ function Recipes() {
   const navigate = useNavigate();
 
   const openRecipe = (recipe) => {
-    // console.log(recipeTitle);
+    console.log(recipe);
     const formattedTitle = recipe.title.replace(/ /g, '_'); // Replace spaces with underscores
-    navigate(`/recipe/${formattedTitle}`,{state:recipe} );
+    navigate(`/recipe/${formattedTitle}`, { state: recipe });
   };
 
   const getRecipes = async () => {
@@ -29,7 +29,7 @@ function Recipes() {
       <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5'>
         {recipesList.map((recipe) => (
           <div className='col' key={recipe._id}>
-            <div className='card'  onClick={() => openRecipe(recipe)} >
+            <div className='card' onClick={() => openRecipe(recipe)} >
               <div className='img-container'>
                 <img
                   src={almondPoundCake}
@@ -40,12 +40,12 @@ function Recipes() {
               <div className='card-body'>
                 <h5 className='card-title'>{recipe.title}</h5>
                 <p className='card-text'>{recipe.about}</p>
-                <div className='recipe_tags '>
+                <div className='recipe_tags'>
                   {Array.isArray(recipe.tags) ? (
                     recipe.tags.map((tag) => (
-                      <span key={recipe._id} className='recipe_tag btn'>
+                      <div key={tag} className='recipe_tag btn'>
                         {tag}
-                      </span>
+                      </div>
                     ))
                   ) : (
                     <span>No tags available</span>
