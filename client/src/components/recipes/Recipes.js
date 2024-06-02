@@ -3,8 +3,12 @@ import './recipes.css';
 import almondPoundCake from '../../imagesOfFoodRecipeApp/almond-pound-cake.avif';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {useLocation} from 'react-router-dom'
 
 function Recipes() {
+  
+  const location = useLocation();
+  const { searchText } = location;
   let [recipesList, setRecipesList] = useState([]);
   const navigate = useNavigate();
 

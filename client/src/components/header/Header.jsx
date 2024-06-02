@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaGithub, FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../../imagesOfFoodRecipeApp/logo.png';
+import { IoSearchOutline } from "react-icons/io5";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,6 +16,15 @@ const Header = () => {
 
   const navigateToRecipes = () => {
     navigate('/recipes');
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    // Handle search logic here
+    // console.log(event)
+    const serachText = event.target.elements.search.value;
+    // console.log(`Search query: ${serachText}`);
+    
   };
 
   return (
@@ -30,9 +40,9 @@ const Header = () => {
       {menuOpen && (
         <nav className="nav-small">
           <FaTimes className="icon close-icon" onClick={toggleMenu} />
-          <NavLink to="/" className="nav-link">Home</NavLink>
-          <NavLink to="/recipes" className="nav-link">Recipes</NavLink>
-          <NavLink to="/about" className="nav-link">About</NavLink>
+          <NavLink to="/" className="nav-link" onClick={toggleMenu}>Home</NavLink>
+          <NavLink to="/recipes" className="nav-link" onClick={toggleMenu}>Recipes</NavLink>
+          <NavLink to="/about" className="nav-link" onClick={toggleMenu}>About</NavLink>
         </nav>
       )}
 
@@ -45,7 +55,16 @@ const Header = () => {
       </div>
 
       <div className="right-section">
-        <input type="text" placeholder="Search recipes..." className="search-input" />
+        <form onSubmit={handleSearchSubmit} className="search-container">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search recipes..."
+            className="search-input" 
+          />
+          <IoSearchOutline className="search-icon" />
+          <button type="submit" style={{ display: 'none' }} />
+        </form>
         <a href="https://github.com/kottakotarohith/Food-Recipes-App" target="_blank" rel="noopener noreferrer">
           <FaGithub className="icon github-icon" />
         </a>

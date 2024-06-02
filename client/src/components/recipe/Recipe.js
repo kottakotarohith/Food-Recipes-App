@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import './Recipe.css';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import almondPoundCake from '../../imagesOfFoodRecipeApp/almond-pound-cake.avif';
 import { CiClock2 } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
+import { IoMdArrowRoundBack } from "react-icons/io";
+
 
 function Recipe() {
   const location = useLocation();
   const { state } = location;
-  const { about, ingredients, instructions, publishedDate, title, tags, time, toppings, _id } = state;
-  // console.log(instructions[0])
+  console.log(state)
+  const { about, ingredients, instructions, publishedDate, title, tags, time, toppings, _id , recipeNotes } = state;
 
   const [servingSize, setServingSize] = useState(1);
   const increaseServingSize = ()=>{
@@ -36,8 +38,16 @@ function Recipe() {
     }).format(date);
   };
 
+  const getBackToRecipesPage = ()=>{
+    window.history.back();
+  }
+
   return (
-    <div className='container'>
+    <div>
+      <div className=''>
+      <IoMdArrowRoundBack onClick={getBackToRecipesPage}  className='getbackicon mx-3 fs-1'/>
+      </div>
+      <div className='container'>
       <div className='img-container'>
         <img src={almondPoundCake} alt={title} style={{ height: "250px", objectFit: "cover" }}  />
       </div>
@@ -91,23 +101,40 @@ function Recipe() {
           }
          </div>
 
-        {toppings.length!=0 ?
-          (
-            <>
-              <div className='toppings'>
-                <h3>Toppings :</h3>
-                <ul className='details-ul'>
-                  {toppings.map((topping)=>(
-                    <li><p className='text-dark'>{topping}</p></li>
-                    ))}
-                    </ul>
-              </div>
-            </>
-          )
-          :
+        {recipeNotes.length===0 ?
+        (
           <>
+          {toppings.length!=0 ?
+            (
+              <>
+                <div className='toppings'>
+                  <h3>Toppings :</h3>
+                  <ul className='details-ul'>
+                    {toppings.map((topping)=>(
+                      <li><p className='text-dark'>{topping}</p></li>
+                      ))}
+                      </ul>
+                </div>
+              </>
+            )
+            :
+            <>
+            </>
+          }
           </>
-        }
+        )
+        :
+        (
+          <>
+                <p className='fw-bold'>Recipe Notes : </p>
+                <ul className='details-ul '>
+                  {recipeNotes.map((note)=>(
+                    <li><p className='text-dark'>{note}</p></li>
+                  ))}
+                </ul>
+              </>
+        )
+      }
 
         </div>
 
@@ -133,9 +160,40 @@ function Recipe() {
               })}
             </div>
 
+            {/* display of toppings if recipe notes are not null */}
+            {recipeNotes.length !== 0 ?
+              (
+                <>
+                  {toppings.length!=0 ?
+                  (
+                    <>
+                      <div className='toppings'>
+                        <h3>Toppings :</h3>
+                        <ul className='details-ul'>
+                          {toppings.map((topping)=>(
+                            <li><p className='text-dark'>{topping}</p></li>
+                            ))}
+                            </ul>
+                      </div>
+                    </>
+                  )
+                  :
+                  <>
+                  </>
+                }
+                </>
+              )
+              :
+              (
+                <>
+                </>
+              )
+            }
+
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
