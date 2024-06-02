@@ -46,12 +46,14 @@ function Recipe() {
         <h1>{title}</h1>
       </div>
 
-      <div className='recipe-details d-flex justify-content-end'>
+      <div className='recipe-details'>
         <p className='lead'>{formatDate(publishedDate)}</p>
-        <CiClock2 />
-          <p className='lead'>{time} min  |</p>
-        <CiBookmark />
+        <CiClock2 className='icon clockicon' />
+        <p className='lead'>{time} min</p>
+        <span className='separator'>|</span>
+        <CiBookmark className='icon' />
       </div>
+
 
       <div className='instructions-ingredients d-grid '>
 
