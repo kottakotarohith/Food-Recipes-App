@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaGithub, FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../../imagesOfFoodRecipeApp/logo.png';
 import { IoSearchOutline } from "react-icons/io5";
+import axios from 'axios';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,14 +19,22 @@ const Header = () => {
     navigate('/recipes');
   };
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    // Handle search logic here
-    // console.log(event)
-    const serachText = event.target.elements.search.value;
-    // console.log(`Search query: ${serachText}`);
-    
-  };
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault()
+    const search = event.target.search.value.trim();
+    if(search!==""){
+      try {
+        const response = await axios.get(`http://localhost:4000/user-api/search?search=${search}`);
+        if (response.data.payload && response.data.payload.length > 0) { // Check the correct structure of the response
+          navigate(`/recipes?search=${search}`, {state:{ searchedRecipes: response.data.payload , searchText:search}});
+        } else {
+          console.log('No recipes found');
+        }
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+      }
+    }
+  }
 
   return (
     <header className="header">
@@ -60,9 +69,9 @@ const Header = () => {
             type="text"
             name="search"
             placeholder="Search recipes..."
-            className="search-input" 
+            className="search-input"
           />
-          <IoSearchOutline className="search-icon" />
+          <IoSearchOutline className="search-icon" onClick={() => document.querySelector('button[type="submit"]').click()} />
           <button type="submit" style={{ display: 'none' }} />
         </form>
         <a href="https://github.com/kottakotarohith/Food-Recipes-App" target="_blank" rel="noopener noreferrer">

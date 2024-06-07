@@ -10,7 +10,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 function Recipe() {
   const location = useLocation();
   const { state } = location;
-  console.log(state)
+  // console.log(state)
   const { about, ingredients, instructions, publishedDate, title, tags, time, toppings, _id , recipeNotes } = state;
 
   const [servingSize, setServingSize] = useState(1);
@@ -22,10 +22,10 @@ function Recipe() {
     }
   }
   const decreaseServingSize = ()=>{
-    if(servingSize!=0){
+    if(servingSize!=1){
       setServingSize(servingSize-1);
     }else{
-      setServingSize(0);
+      setServingSize(1);
     }
   }
 

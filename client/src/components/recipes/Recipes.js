@@ -8,12 +8,11 @@ import {useLocation} from 'react-router-dom'
 function Recipes() {
   
   const location = useLocation();
-  const { searchText } = location;
   let [recipesList, setRecipesList] = useState([]);
   const navigate = useNavigate();
 
   const openRecipe = (recipe) => {
-    console.log(recipe);
+    // console.log(recipe);
     const formattedTitle = recipe.title.replace(/ /g, '_'); // Replace spaces with underscores
     navigate(`/recipe/${formattedTitle}`, { state: recipe });
   };
@@ -25,11 +24,25 @@ function Recipes() {
   };
 
   useEffect(() => {
-    getRecipes();
-  }, []);
+    if (location.state && location.state.searchedRecipes) {
+      setRecipesList(location.state.searchedRecipes);
+    } else {
+        getRecipes();
+    }
+  }, [location]);
 
   return (
     <div className='container'>
+      <div >
+      {location.state && location.state.searchedRecipes ?
+        <>
+          <h1 className='text-wrap text-center searchedText'>Results for : {location.state.searchText} </h1>
+        </>
+        :
+        <>
+        </>
+      }
+      </div>
       <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5'>
         {recipesList.map((recipe) => (
           <div className='col' key={recipe._id}>

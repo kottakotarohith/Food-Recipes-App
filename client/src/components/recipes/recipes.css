@@ -1,3 +1,10 @@
+.searchedText{
+    background-image: linear-gradient(to right, #ff9000 ,#f4bf3c);
+    border-radius: 15px;
+    padding: 5vh 0;
+
+}
+
 .card {
     height: 400px;
     position: relative;

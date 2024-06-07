@@ -95,5 +95,46 @@ userApp.get('/recipes', expressAsyncHandler(async (req, res) => {
 }))
 
 
+
+//search recipe
+userApp.get('/search', expressAsyncHandler(async(req,res)=>{
+    // console.log(req.query.search)
+    const searchQuery=req.query.search
+    if (!searchQuery) {
+        return res.status(400).send({ message: "No search query provided" });
+    }
+    const words = searchQuery.split(' ');
+
+    try {
+        // Perform a search for each word individually
+        const wordSearchPromises = words.map(word =>
+            recipesCollection.find({
+                $or: [
+                    { title: new RegExp(word, 'i') },
+                    { 'ingredients.name': new RegExp(word, 'i') },  // assuming recipes have an 'ingredients' field
+                    { tags : new RegExp(word,'i') },//search  in tags
+                    { toppings : new RegExp(word, 'i') }//search in toppings
+                ]
+            }).toArray()
+        );
+
+        
+
+        // Wait for all searches to complete
+        const searchResults = await Promise.all([
+            ...wordSearchPromises
+        ]);
+
+        // Flatten the results array and remove duplicates
+        const results = [...new Set(searchResults.flat().map(recipe => JSON.stringify(recipe)))].map(str => JSON.parse(str));
+
+        res.send({ message: "Search results", payload: results });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+}))
+
+
 //export userApp
 module.exports = userApp;

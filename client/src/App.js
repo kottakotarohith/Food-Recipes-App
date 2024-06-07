@@ -6,6 +6,8 @@ import RootLayout from './RootLayout';
 import Home from './components/home/Home';
 import Recipes from './components/recipes/Recipes';
 import Recipe from './components/recipe/Recipe';
+import About from './components/about/About';
+
 
 function App() {
 
@@ -22,6 +24,10 @@ function App() {
         {
           path:"/home",
           element:<Home/>
+        },
+        {
+          path:"/about",
+          element:<About/>
         },
         {
           path:"/recipes",
