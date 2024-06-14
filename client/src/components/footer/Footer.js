@@ -13,7 +13,7 @@ function Footer() {
               Dive into a community-curated collection of recipes.
             </p>
             
-            <p>© 2024 Food Recipe App. All Rights Reserved.</p>
+            <p>© 2024 Food Recipe App. #inspired.</p>
         </div>
     </div>
   )
