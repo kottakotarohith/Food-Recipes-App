@@ -7,6 +7,7 @@ import Home from './components/home/Home';
 import Recipes from './components/recipes/Recipes';
 import Recipe from './components/recipe/Recipe';
 import About from './components/about/About';
+import Login from './components/login/Login';
 
 
 function App() {
@@ -32,6 +33,10 @@ function App() {
         {
           path:"/recipes",
           element:<Recipes/>
+        },
+        {
+          path:"/login",
+          element:<Login/>
         },
         {
           path : `/recipe/:recipeTitle`,

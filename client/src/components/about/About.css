@@ -1,0 +1,21 @@
+/* About.css */
+
+.about {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center; /* Center text horizontally */
+    background: linear-gradient(90deg,#f4bf3c,#ff9a6c);
+    border-radius: 25px;
+    margin:0 3vw;
+  }
+  
+  .about-intro {
+    max-width: 50vw;
+  }
+  
+  .about-intro h1 {
+    margin: 0 auto; /* Center the h1 element within its container */
+  }
+  

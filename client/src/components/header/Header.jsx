@@ -2,6 +2,7 @@ import './Header.css';
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaGithub, FaBars, FaTimes } from 'react-icons/fa';
+import { IoMdLogIn } from "react-icons/io";
 import logo from '../../imagesOfFoodRecipeApp/logo.png';
 import { IoSearchOutline } from "react-icons/io5";
 import axios from 'axios';
@@ -18,6 +19,9 @@ const Header = () => {
   const navigateToRecipes = () => {
     navigate('/recipes');
   };
+  const navigatetologin= ()=>{
+    navigate('/login');
+  }
 
   const handleSearchSubmit = async (event) => {
     event.preventDefault()
@@ -42,7 +46,8 @@ const Header = () => {
         <FaBars className="icon menu-icon" onClick={toggleMenu} />
         <img src={logo} alt=" Logo" className="logo-img" />
         <div className="name">
-          <span className="fs-3 px-2 text-danger-emphasis">SavorSpot</span>
+          <span className="fs-3 px-2 text-danger-emphasis">SavourSpot </span>
+          {/* <p className='px-2 text-danger-emphasis fs-5'>-Your Ultimate Recipe Hub!</p> */}
         </div>
       </div>
 
@@ -77,6 +82,11 @@ const Header = () => {
         <a href="https://github.com/kottakotarohith/Food-Recipes-App" target="_blank" rel="noopener noreferrer">
           <FaGithub className="icon github-icon" />
         </a>
+        <div className="login-container" onClick={navigatetologin} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+          <IoMdLogIn className='login-icon icon' />
+          <span className="login-text">Login</span>
+        </div>
+
       </div>
     </header>
   );

@@ -1,10 +1,19 @@
 import React from 'react'
-import about from '../../imagesOfFoodRecipeApp/about.png'
+import './About.css'
 
 function About() {
   return (
     <div className='about'>
-        <img src={about} alt="about"  style={{width:"100%"}}/>
+
+        <div className='about-intro'>
+          <p style={{color:'#da7706'}}>introducing SavorSpot:</p>
+          <h1 className='py-2' style={{maxWidth:'50vw'}}>A Curated Collection of Community-Crafted Recipes</h1>
+          <p className=' lead' >Explore a growing repository of culinary delights, meticulously organized and shared through GitHub contributions.</p>
+        </div>
+
+        <div>
+          
+        </div>
     </div>
   )
 }

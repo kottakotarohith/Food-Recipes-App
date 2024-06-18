@@ -63,6 +63,7 @@
   cursor: pointer;
 }
 
+
 .menu-icon {
   display: block; /* Show menu icon by default */
   margin-left: 0; /* Align to the left */
@@ -143,6 +144,9 @@
     display: flex; /* Show small nav for smaller screens when menu is open */
   }
   .name {
+    display: none;
+  }
+  .login-text{
     display: none;
   }
 }

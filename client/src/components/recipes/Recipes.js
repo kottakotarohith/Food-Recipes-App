@@ -34,14 +34,14 @@ function Recipes() {
   return (
     <div className='container'>
       <div >
-      {location.state && location.state.searchedRecipes ?
-        <>
-          <h1 className='text-wrap text-center searchedText'>Results for : {location.state.searchText} </h1>
-        </>
-        :
-        <>
-        </>
-      }
+          {location.state && location.state.searchedRecipes ?
+            <>
+              <h1 className='text-wrap text-center searchedText'>Results for : {location.state.searchText} </h1>
+            </>
+            :
+            <>
+            </>
+          }
       </div>
       <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5'>
         {recipesList.map((recipe) => (
