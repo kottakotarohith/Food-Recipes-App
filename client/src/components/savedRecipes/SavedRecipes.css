@@ -1,0 +1,16 @@
+.saved-recipes-heading{
+    background-image: linear-gradient(to right, #ff9000 ,#f4bf3c);
+    border-radius: 15px;
+    padding: 5vh ;
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+     
+  }
+  
+  .explore-link {
+    text-align: center;
+  }
+  

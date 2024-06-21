@@ -1,6 +1,6 @@
 /* About.css */
 
-.about {
+.about-intro {
     display: flex;
     justify-content: center;
     padding-top: 10px;
@@ -10,12 +10,49 @@
     border-radius: 25px;
     margin:0 3vw;
   }
-  
-  .about-intro {
+
+  .about-intro-inside{
     max-width: 50vw;
   }
   
-  .about-intro h1 {
+  .about-intro-inside h1 {
     margin: 0 auto; /* Center the h1 element within its container */
+  }
+
+
+  .about-1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 0  2rem;
+  }
+  
+  .text-content {
+    padding-left: 30px;
+    padding-right: 50px;
+    max-width: 50vw;
+  }
+
+  .image-content img {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  @media (max-width: 768px) {
+    .about-1 {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .text-content,
+    .image-content {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .about-1 h1 {
+      font-size: 2rem;
+    }
   }
   

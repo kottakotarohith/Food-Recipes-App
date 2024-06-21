@@ -8,7 +8,6 @@ require('dotenv').config()
 
 
 
-
 let usersCollection
 let recipesCollection
 //get usersCollection object ( using middleware)
@@ -135,6 +134,43 @@ userApp.get('/search', expressAsyncHandler(async(req,res)=>{
     }
 }))
 
+//updating bookmarked Status
+userApp.put('/bookmarkStatus/:title', expressAsyncHandler(async (req, res) => {
+    const { title } = req.params;
+    console.log(title)
+
+    try {
+        // Find the recipe by ID
+        const recipe = await recipesCollection.findOne({ title: title });
+
+        if (!recipe) {
+            return res.status(404).json({ message: "Recipe not found" });
+        }
+
+        // Toggle the bookmarked status
+        const updatedBookmarked = !recipe.bookmarked;
+
+        // Update the recipe with the new bookmarked status
+        await recipesCollection.updateOne(
+            { title: title },
+            { $set: { bookmarked: updatedBookmarked } }
+        );
+
+        // Respond with updated bookmarked status
+        res.status(200).json({ message: "Bookmark status updated", bookmarked: updatedBookmarked });
+    } catch (error) {
+        console.error("Error updating bookmark status:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+}));
+
+
+//getting saved recipes
+userApp.get('/saved-recipes', expressAsyncHandler(async (req, res) => {
+    const allRecipes = await recipesCollection.find({bookmarked: true}).toArray()
+    //send res
+    res.send({message:"recipes" , payload:allRecipes})
+}))
 
 //export userApp
 module.exports = userApp;
